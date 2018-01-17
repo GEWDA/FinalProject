@@ -3,15 +3,47 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/linearLayoutH_TitleBar"
+        android:gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_dark">
+        <ImageView
+            android:src="@drawable/imageedit_2_3489386837_e1514762315785_c"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageViewLogo"
+            android:cropToPadding="false"
+            android:paddingBottom="2dip" />
+    </LinearLayout>
+<!--under development notification section begins-->
     <TextView
-        android:text="Select Sermon"
+        android:text="Feature under Development"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textViewResonate"
         android:layout_gravity="center_horizontal" />
+    <TextView
+        android:text="This feature is currently awaiting an external API to be fully functional. Until then, previous sermons can be accessed using the button below"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAlternateResonateMethod"
+        android:layout_gravity="center_horizontal" />
+    <Button
+        android:text="View in Browser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonExternalSermonAccess" />
+<!--under development notification section ends-->
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:id="@+id/spinnerResonateSermonSelect" />
 </LinearLayout>

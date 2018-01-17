@@ -4,11 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:background="@drawable/edwin_andrade_158050_e1502792382504"
+    android:gravity="bottom">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/relativeLayout1">
+        android:id="@+id/relativeLayout1"
+        android:gravity="bottom"
+        android:layout_gravity="bottom">
         <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
@@ -16,6 +20,7 @@
             android:id="@+id/linearLayoutV1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+          
             <LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
@@ -23,29 +28,24 @@
                 android:id="@+id/linearLayoutH_TitleBar"
                 android:gravity="top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@android:color/background_dark">
                 <ImageView
-                    android:src="@android:drawable/ic_menu_gallery"
+                    android:src="@drawable/imageedit_2_3489386837_e1514762315785_c"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageViewLogo"
-                    android:layout_margin="3dip"
-                    android:tag="Placeholder" />
-                <TextView
-                    android:text="Harmony"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/textViewMainTitle"
-                    android:layout_margin="3dip"
-                    android:tag="Placeholder" />
+                    android:cropToPadding="false"
+                    android:paddingBottom="2dip" />
             </LinearLayout>
+          
             <GridLayout
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:id="@+id/gridLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="top">
                 <Button
                     android:text="Access Resonate... (PH)"
                     android:id="@+id/buttonLaunchResonate"
@@ -57,6 +57,15 @@
                     android:layout_row="1"
                     android:layout_column="0" />
             </GridLayout>
+            <TextView
+                android:text="Harmony Church is located in the city of Christchurch on New Zealand’s South Island. Harmony is a multi-cultural, mission-minded, Christ-centered and Spirit led community, sharing the love of God in our city and world. The heartbeat of the church is Passion for God and Compassion for People. (PH)"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/textChurchSummary"
+                android:gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:backgroundTint="#00000000" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
