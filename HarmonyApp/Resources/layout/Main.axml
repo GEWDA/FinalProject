@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relativeLayout1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/linearLayoutV1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/linearLayoutH_TitleBar"
+                android:gravity="top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@android:drawable/ic_menu_gallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageViewLogo"
+                    android:layout_margin="3dip"
+                    android:tag="Placeholder" />
+                <TextView
+                    android:text="Harmony"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textViewMainTitle"
+                    android:layout_margin="3dip"
+                    android:tag="Placeholder" />
+            </LinearLayout>
+            <GridLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/gridLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Access Resonate... (PH)"
+                    android:id="@+id/buttonLaunchResonate"
+                    android:layout_column="0"
+                    android:layout_row="0" />
+                <Button
+                    android:text="Event Calendar (PH)"
+                    android:id="@+id/buttonLaunchEventCalendar"
+                    android:layout_row="1"
+                    android:layout_column="0" />
+            </GridLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
