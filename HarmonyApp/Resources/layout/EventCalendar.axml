@@ -20,15 +20,21 @@
             android:cropToPadding="false"
             android:paddingBottom="2dip" />
     </LinearLayout>
-    <TextView
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewEventCalendar"
-        android:layout_gravity="center_horizontal" />
     <CalendarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/calendarView1" />
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1">
+        <ListView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/EventList1" />
+    </ScrollView>
 </LinearLayout>

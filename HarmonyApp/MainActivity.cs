@@ -13,6 +13,7 @@ namespace HarmonyApp
     {
         private Button btnLaunchResonate;
         private Button btnLaunchEventCalendar;
+        private LinearLayout titleBar;
         public Typeface ParagraphFont;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,7 +32,23 @@ namespace HarmonyApp
             btnLaunchResonate.Click += BtnLaunchResonate_Click;
             btnLaunchEventCalendar = FindViewById<Button>(Resource.Id.buttonLaunchEventCalendar);
             btnLaunchEventCalendar.Click += BtnLaunchEventCalendar_Click;
+            titleBar = FindViewById<LinearLayout>(Resource.Id.linearLayoutH_TitleBar);
+            titleBar.Click += TitleBar_Click;
             //ParagraphFont = Typeface.CreateFromAsset(Assets, "fonts/paragraph.ttf");//missing the file currently
+        }
+
+        private void TitleBar_Click(object sender, EventArgs e)
+        {
+            LaunchWebBrowser();
+        }
+
+        private void LaunchWebBrowser()
+        {
+            var uri = Android.Net.Uri.Parse("http://harmonychurch.nz/");
+            var intent = new Intent(Intent.ActionView, uri);
+            Log.Info("HarmonyApp", "Launching Web Browser");
+            StartActivity(intent);
+            
         }
 
         private void BtnLaunchResonate_Click(object sender, EventArgs e)
