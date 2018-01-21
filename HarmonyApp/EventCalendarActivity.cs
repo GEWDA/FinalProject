@@ -38,23 +38,31 @@ namespace HarmonyApp
             titleBar = FindViewById<LinearLayout>(Resource.Id.linearLayoutH_TitleBar);
             titleBar.Click += TitleBar_Click;
             eventList = FindViewById<ListView>(Resource.Id.EventList1);
-            eventList.UpdateViewLayout(FindViewById(Android.Resource.Layout.SimpleListItem2), null);
 
             eventCalendar = FindViewById<CalendarView>(Resource.Id.calendarView1);
             LoadEvents(eventCalendar);
             ListEvents(eventCalendar);
+
+
         }
 
         private void LoadEvents(CalendarView calendar)
         {
             var startDate = new DateTime(2018, 3, 9).Ticks;
             var endDate = new DateTime(2018, 3, 10).Ticks;
-            ContentValues events = new ContentValues();
-            events.Put(CalendarContract.Events.InterfaceConsts.CalendarId, calendar.Id);
-            events.Put(CalendarContract.Events.InterfaceConsts.Title, "Grace and Glory Conference");
-            events.Put(CalendarContract.Events.InterfaceConsts.Dtstart,startDate);//gets the date in ms
-            events.Put(CalendarContract.Events.InterfaceConsts.Dtend, endDate);
-            
+            //ContentValues events = new ContentValues();
+            //events.Put(CalendarContract.Events.InterfaceConsts.CalendarId, calendar.Id);
+            //events.Put(CalendarContract.Events.InterfaceConsts.Title, "Grace and Glory Conference");
+            //events.Put(CalendarContract.Events.InterfaceConsts.Dtstart,startDate);//gets the date in ms
+            //events.Put(CalendarContract.Events.InterfaceConsts.Dtend, endDate);
+            //string[][] items = { new string[]{ "Grace and Glory Conference", new DateTime(2018, 3, 9).ToString() },new string[] { "Night Services Begin", new DateTime(2018, 2, 11).ToString() } };
+            string[] items = { "Grace and Glory Conference", new DateTime(2018, 3, 9).ToString(), "Night Services Begin", new DateTime(2018, 2, 11).ToString() };
+
+            //var uri = ContentResolver.Insert(CalendarContract.Events.ContentUri, events);
+            //ArrayAdapter<string[]> adapter = new ArrayAdapter<string[]>(this,Resource.Layout.EventListView,items);
+            //ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Resource.Layout.EventListView, items);
+            ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, items);
+            eventList.Adapter = adapter;            
         }
 
         private void LoadEvents(CalendarView calendar, Uri eventListPage)
@@ -64,19 +72,20 @@ namespace HarmonyApp
 
         private void ListEvents(CalendarView eventCalendar)
         {
-            var myUri = CalendarContract.Events.ContentUri;
-            string[] items = {
-                CalendarContract.Events.InterfaceConsts.Id,
-                CalendarContract.Events.InterfaceConsts.Title,
-                CalendarContract.Events.InterfaceConsts.Dtstart };
-            var loader = new CursorLoader(this, myUri, items, //load the values in items from events...
-                "calendar_id="+eventCalendar.Id.ToString(), null, "dtstart ASC");//...from eventCalendar, with no arguments, and order by date
-            var cursor = (ICursor)loader.LoadInBackground();
+            //var myUri = CalendarContract.Events.ContentUri;
+            //string[] items = {
+            //    CalendarContract.Events.InterfaceConsts.Id,
+            //    CalendarContract.Events.InterfaceConsts.Title,
+            //    CalendarContract.Events.InterfaceConsts.Dtstart };
+            //var loader = new CursorLoader(this, myUri, items, //load the values in items from events...
+            //    null, null, null);//...from eventCalendar, with no arguments, and order by date//String.Format("calendar_id={0}",eventCalendar.Id)//"dtstart ASC"
+            ////var cursor = (ICursor)loader.LoadInBackground();//FIX
 
-            string[] viewItems = {CalendarContract.Events.InterfaceConsts.Title,
-                CalendarContract.Events.InterfaceConsts.Dtstart };
+            //string[] viewItems = {CalendarContract.Events.InterfaceConsts.Title,
+            //    CalendarContract.Events.InterfaceConsts.Dtstart };
+            //int[] viewData = { Resource.Id.eventTitle,Resource.Id.eventStartDate};
+            ////var adapter = new SimpleCursorAdapter(this, Resource.Layout.EventListView, cursor, viewItems, viewData);
 
-            //int[] viewData = { Resource.Id.//eve};
         }
 
         private void ListEvents(CalendarView eventCalendar, Uri eventListPage)
