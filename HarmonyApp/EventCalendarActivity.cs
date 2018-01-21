@@ -27,6 +27,7 @@ namespace HarmonyApp
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //Context.LayoutInflaterService;
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.EventCalendar);
             InitialiseControls();
@@ -37,6 +38,8 @@ namespace HarmonyApp
             titleBar = FindViewById<LinearLayout>(Resource.Id.linearLayoutH_TitleBar);
             titleBar.Click += TitleBar_Click;
             eventList = FindViewById<ListView>(Resource.Id.EventList1);
+            eventList.UpdateViewLayout(FindViewById(Android.Resource.Layout.SimpleListItem2), null);
+
             eventCalendar = FindViewById<CalendarView>(Resource.Id.calendarView1);
             LoadEvents(eventCalendar);
             ListEvents(eventCalendar);
