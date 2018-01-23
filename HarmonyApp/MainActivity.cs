@@ -8,7 +8,7 @@ using Android.Util;
 
 namespace HarmonyApp
 {
-    [Activity(Label = "Harmony App", MainLauncher = true,Theme = "@style/Theme.Custom")]
+    [Activity(Label = "Harmony App", MainLauncher = true,Theme = "@style/Theme.Custom",Icon ="@drawable/temporary_logo")]
     public class MainActivity : Activity
     {
         private Button btnLaunchResonate;
@@ -34,6 +34,8 @@ namespace HarmonyApp
             btnLaunchEventCalendar.Click += BtnLaunchEventCalendar_Click;
             titleBar = FindViewById<LinearLayout>(Resource.Id.linearLayoutH_TitleBar);
             titleBar.Click += TitleBar_Click;
+            ActionBar.Title = null;
+            ActionBar.Hide();
             //ParagraphFont = Typeface.CreateFromAsset(Assets, "fonts/paragraph.ttf");//missing the file currently
         }
 

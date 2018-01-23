@@ -69,6 +69,9 @@ namespace HarmonyApp
 			// aapt resource value: 0x7f020001
 			public const int imageedit_2_3489386837_e1514762315785_c = 2130837505;
 			
+			// aapt resource value: 0x7f020002
+			public const int temporary_logo = 2130837506;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

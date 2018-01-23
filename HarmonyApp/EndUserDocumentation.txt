@@ -1,1 +1,25 @@
-﻿
+﻿------------------------------------------------------------
+************************************************************
+End User Documentation
+************************************************************
+------------------------------------------------------------
+
+In it's current state, the Harmony App has 2 core features:
+
+1.	Resonate (Sermon Archive)
+2.	Event Calendar
+
+It also has several minor features, such as:
+
+ - Links to launch harmonychurch.nz in the web browser from any page (via clicking the logo)
+ - 
+
+Consider all layouts, images, and labels as placeholders awaiting your official logos, images, fonts, and text
+
+------------------------------------------------------------
+Resonate
+------------------------------------------------------------
+
+As previously discussed, the Resonate section of the app will be unable to function internally without access to the official Resonate API.
+
+As a temporary fix, I have included a button to access this feature externally via the website, although i do not believe this to be suitable for final release

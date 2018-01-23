@@ -32,6 +32,8 @@ namespace HarmonyApp
         {
             btnOpenExternal = FindViewById<Button>(Resource.Id.buttonExternalSermonAccess);
             btnOpenExternal.Click += BtnOpenExternal_Click;
+            ActionBar.Title = null;
+            ActionBar.Hide();
         }
         private void TitleBar_Click(object sender, EventArgs e)
         {

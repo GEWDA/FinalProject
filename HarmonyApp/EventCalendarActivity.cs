@@ -101,6 +101,8 @@ namespace HarmonyApp
             
             eventCalendar = FindViewById<CalendarView>(Resource.Id.calendarView1);
             LoadEvents(eventCalendar);
+            ActionBar.Title = null;
+            ActionBar.Hide();
             //currentDateTicks = eventCalendar.Date;
 
         }
