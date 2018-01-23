@@ -27,6 +27,7 @@ namespace HarmonyApp
         {
             private System.Object[][] items;
             private Context myContext;
+            public System.Object GoToDate { get;internal set; }
 
             public MyAdapter(System.Object[][] items, Context context)
             {
@@ -39,12 +40,22 @@ namespace HarmonyApp
 
             public override Java.Lang.Object GetItem(int position)//unused
             {
-                throw new NotImplementedException();
+                return "THIS METHOD SHOULD NOT BE USED";
             }
 
             public override long GetItemId(int position)//unused
             {
-                throw new NotImplementedException();
+                //DateTime actualDateTime;
+                //try
+                //{
+                //    actualDateTime = (DateTime)items[position][1];
+                //    GoToDate = actualDateTime.Ticks;//needs to be tested
+                //}
+                //catch
+                //{
+                //    Log.Warn("HarmonyApp", "Selected event has no DateTime");
+                //}
+                return position;
             }
 
             public override View GetView(int position, View convertView, ViewGroup parent)
@@ -62,23 +73,21 @@ namespace HarmonyApp
                 catch
                 {
                     eventStartDate.Text = items[position][1].ToString();//if it is not a date, just show it
-                    Log.Warn("HarmonyApp", "An event does not have a valid DateTime");
+                    Log.Warn("HarmonyApp", "An event at position "+position.ToString()+" does not have a valid DateTime");
 
                 }
-
                 return myView;
             }
         }
         
         public System.Object[][] myList;
-
+        //private long currentDateTicks;
         private CalendarView eventCalendar;
         private LinearLayout titleBar;
         private ListView eventList;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            //Context.LayoutInflaterService;
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.EventCalendar);
             InitialiseControls();
@@ -89,12 +98,10 @@ namespace HarmonyApp
             titleBar = FindViewById<LinearLayout>(Resource.Id.linearLayoutH_TitleBar);
             titleBar.Click += TitleBar_Click;
             eventList = FindViewById<ListView>(Resource.Id.EventList1);
-            //eventList.Adapter = new MyAdapter();
-
+            
             eventCalendar = FindViewById<CalendarView>(Resource.Id.calendarView1);
             LoadEvents(eventCalendar);
-            ListEvents(eventCalendar);
-            var test = titleBar;
+            //currentDateTicks = eventCalendar.Date;
 
         }
 
@@ -107,47 +114,36 @@ namespace HarmonyApp
                 new System.Object[] { "Night Services Begin", new DateTime(2018, 2, 11, 18, 0, 0) },
                 new System.Object[]{ "Wild, Strong, and Free Women's Conference", "Date to be Confirmed" } };
             myList = items;
-            //var startDate = new DateTime(2018, 3, 9).Ticks;
-            //var endDate = new DateTime(2018, 3, 10).Ticks;
-
-            //ContentValues events = new ContentValues();
-            //events.Put(CalendarContract.Events.InterfaceConsts.CalendarId, calendar.Id);
-            //events.Put(CalendarContract.Events.InterfaceConsts.Title, "Grace and Glory Conference");
-            //events.Put(CalendarContract.Events.InterfaceConsts.Dtstart,startDate);//gets the date in ms
-            //events.Put(CalendarContract.Events.InterfaceConsts.Dtend, endDate);
-            //string[][] items = { new string[]{ "Grace and Glory Conference", new DateTime(2018, 3, 9).ToString() },new string[] { "Night Services Begin", new DateTime(2018, 2, 11).ToString() } };
-
-
-            //var uri = ContentResolver.Insert(CalendarContract.Events.ContentUri, events);
-            //ArrayAdapter<string[]> adapter = new ArrayAdapter<string[]>(this,Resource.Layout.EventListView,myList);
-            //ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Resource.Layout.EventListView, myList);
-            //ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, myList);
             var adapter = new MyAdapter(items,this);
-            eventList.Adapter = adapter;            
+            eventList.Adapter = adapter;
+            //eventList.ItemClick += EventList_ItemClick;
         }
+
+        //private void EventList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        //{
+        //    var mySender = (ListView)sender;
+        //    var something = mySender.Adapter.GetView(e.Position, new TextView(this), mySender);
+        //    DateTime actualDateTime;
+        //    try
+        //    {
+        //        actualDateTime = (DateTime)myList[e.Position][1];
+        //        Log.Info("HarmonyApp", "Going to date: "+actualDateTime.ToString(@"dd/MM/yyyy hh:mm:ss tt"));
+
+        //        eventCalendar.Date = actualDateTime.Ticks- (long)6.365606e+17;///500000;//????? why is the division necessary????00000000000000000
+        //        //GoToDate = actualDateTime.Ticks;//needs to be tested
+        //    }
+        //    catch
+        //    {
+        //        Log.Warn("HarmonyApp", "Selected event has no DateTime");
+        //    }
+            
+        //}
 
         private void LoadEvents(CalendarView calendar, Uri eventListPage)
         {
             throw new NotImplementedException();//will eventually load events from a list online
         }
 
-        private void ListEvents(CalendarView eventCalendar)
-        {
-            //var myUri = CalendarContract.Events.ContentUri;
-            //string[] items = {
-            //    CalendarContract.Events.InterfaceConsts.Id,
-            //    CalendarContract.Events.InterfaceConsts.Title,
-            //    CalendarContract.Events.InterfaceConsts.Dtstart };
-            //var loader = new CursorLoader(this, myUri, myList, //load the values in myList from events...
-            //    null, null, null);//...from eventCalendar, with no arguments, and order by date//String.Format("calendar_id={0}",eventCalendar.Id)//"dtstart ASC"
-            ////var cursor = (ICursor)loader.LoadInBackground();//FIX
-
-            //string[] viewItems = {CalendarContract.Events.InterfaceConsts.Title,
-            //    CalendarContract.Events.InterfaceConsts.Dtstart };
-            //int[] viewData = { Resource.Id.eventTitle,Resource.Id.eventStartDate};
-            ////var adapter = new SimpleCursorAdapter(this, Resource.Layout.EventListView, cursor, viewItems, viewData);
-
-        }
 
         private void ListEvents(CalendarView eventCalendar, Uri eventListPage)
         {

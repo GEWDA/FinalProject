@@ -97,14 +97,14 @@ namespace HarmonyApp
 			// aapt resource value: 0x7f070002
 			public const int calendarView1 = 2131165186;
 			
+			// aapt resource value: 0x7f070004
+			public const int eventListView = 2131165188;
+			
 			// aapt resource value: 0x7f070006
-			public const int eventListView = 2131165190;
+			public const int eventStartDate = 2131165190;
 			
 			// aapt resource value: 0x7f070005
-			public const int eventStartDate = 2131165189;
-			
-			// aapt resource value: 0x7f070004
-			public const int eventTitle = 2131165188;
+			public const int eventTitle = 2131165189;
 			
 			// aapt resource value: 0x7f070009
 			public const int gridLayout1 = 2131165193;
