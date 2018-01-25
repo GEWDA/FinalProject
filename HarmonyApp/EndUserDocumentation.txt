@@ -4,6 +4,11 @@ End User Documentation
 ************************************************************
 ------------------------------------------------------------
 
+
+------------------------------------------------------------
+General Information
+------------------------------------------------------------
+
 In it's current state, the Harmony App has 2 core features:
 
 1.	Resonate (Sermon Archive)
@@ -12,9 +17,11 @@ In it's current state, the Harmony App has 2 core features:
 It also has several minor features, such as:
 
  - Links to launch harmonychurch.nz in the web browser from any page (via clicking the logo)
- - 
+
+
 
 Consider all layouts, images, and labels as placeholders awaiting your official logos, images, fonts, and text
+
 
 ------------------------------------------------------------
 Resonate
@@ -22,4 +29,14 @@ Resonate
 
 As previously discussed, the Resonate section of the app will be unable to function internally without access to the official Resonate API.
 
-As a temporary fix, I have included a button to access this feature externally via the website, although i do not believe this to be suitable for final release
+As a temporary fix, I have included a button to access this feature externally via the website, although I do not believe this to be suitable for final release.
+
+
+------------------------------------------------------------
+Event Calendar
+------------------------------------------------------------
+
+While the event calendar will ultimately be loaded from information online, I have not been provided with access to such information.
+For now I have manually entered in the events that are currently mentioned by your website.
+As shown by the upcoming Women's Conference, the app can handle events with or without dates.
+Currently, the calendar view above the event list does not automatically move to an event, and therefore only functions to allow the user to manually scroll and see the dates of the events

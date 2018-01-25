@@ -1,0 +1,42 @@
+﻿------------------------------------------------------------
+************************************************************
+End User Documentation
+************************************************************
+------------------------------------------------------------
+
+
+This documentation is intended for Developers
+
+
+------------------------------------------------------------
+General Information / Miscellaneous
+------------------------------------------------------------
+
+I expect the client will want different backgrounds, logos, fonts, and text for their final design
+This app does use a custom theme (although it is currently very similar to the default theme) which can be found in Resources/values/theme.xml
+
+
+------------------------------------------------------------
+Event Calendar
+------------------------------------------------------------
+
+The method I have used to store the events is an array of object arrays (which I will refer to as the 'events list'), with each individual array representing one event (which I will refer to as an 'event array').
+Typically an event array contains a string for the event name and a datetime for the date, however I have designed this to be flexible.
+
+ - Whatever the first item is in the 'event array' will be converted into a string and displayed, and the second item will be formatted as a date (dd/MM/yyyy hh:mm;ss tt), converted into a string, and displayed under the first item
+ - If the second item can not be formatted as a date, it will only be converted to a string and displayed
+ - If there is no second item, or another error occurs with (specifically) the second item, a default value of "Date to be Confirmed" will be displayed instead
+ - Currently, any further elements in an event array are unused/ignored (in case you want to add event description for example)
+
+In it's current state, the CalendarView has no special functionality.
+I had planned to code the calendar to go to the date of an event when you click it in the events list (if it has a date), but unfortunately due to my inexperience with CalendarViews I was unable to complete this minor feature to an 
+acceptable standard, as all of the documentation I could find was for programming in Java and I was unable to successfully adapt it.
+I have commented out but left in some code which I believe to be in the right direction for adding this feature.
+
+
+------------------------------------------------------------
+Resonate
+------------------------------------------------------------
+
+I did not have access to the Resonate API, so I could not do much here.
+I have created a button to access this feature through the web instead of through the app as a temporary solution.

@@ -40,7 +40,7 @@ namespace HarmonyApp
 
             public override Java.Lang.Object GetItem(int position)//unused
             {
-                return "THIS METHOD SHOULD NOT BE USED";
+                return "THIS METHOD IS NOT CURRENTLY USED";
             }
 
             public override long GetItemId(int position)//unused
@@ -72,7 +72,16 @@ namespace HarmonyApp
                 }
                 catch
                 {
-                    eventStartDate.Text = items[position][1].ToString();//if it is not a date, just show it
+                    try
+                    {
+                        eventStartDate.Text = items[position][1].ToString();//if it is not a date, just show it
+                    }
+                    catch
+                    {
+                        eventStartDate.Text = "Date to be Confirmed";//if there is no data, set default
+                        
+                    }
+                    
                     Log.Warn("HarmonyApp", "An event at position "+position.ToString()+" does not have a valid DateTime");
 
                 }
@@ -81,7 +90,6 @@ namespace HarmonyApp
         }
         
         public System.Object[][] myList;
-        //private long currentDateTicks;
         private CalendarView eventCalendar;
         private LinearLayout titleBar;
         private ListView eventList;
@@ -103,18 +111,15 @@ namespace HarmonyApp
             LoadEvents(eventCalendar);
             ActionBar.Title = null;
             ActionBar.Hide();
-            //currentDateTicks = eventCalendar.Date;
 
         }
 
         private void LoadEvents(CalendarView calendar)
         {
-
-            //string[] items = { "Grace and Glory Conference", new DateTime(2018, 3, 9,17,0,0).ToString(), "Night Services Begin", new DateTime(2018, 2, 11,18,0,0).ToString(),"Wild, Strong, and Free Women's Conference","Date to be Confirmed" };//temporary solution while i await the proper list
             System.Object[][] items = {
                 new System.Object[] { "Grace and Glory Conference", new DateTime(2018, 3, 9, 17, 0, 0) },
                 new System.Object[] { "Night Services Begin", new DateTime(2018, 2, 11, 18, 0, 0) },
-                new System.Object[]{ "Wild, Strong, and Free Women's Conference", "Date to be Confirmed" } };
+                new System.Object[]{ "Wild, Strong, and Free Women's Conference", "Date to be Confirmed" } };//temoprary solution while i await the official list
             myList = items;
             var adapter = new MyAdapter(items,this);
             eventList.Adapter = adapter;
@@ -131,14 +136,14 @@ namespace HarmonyApp
         //        actualDateTime = (DateTime)myList[e.Position][1];
         //        Log.Info("HarmonyApp", "Going to date: "+actualDateTime.ToString(@"dd/MM/yyyy hh:mm:ss tt"));
 
-        //        eventCalendar.Date = actualDateTime.Ticks- (long)6.365606e+17;///500000;//????? why is the division necessary????00000000000000000
-        //        //GoToDate = actualDateTime.Ticks;//needs to be tested
+        //        eventCalendar.Date = actualDateTime.Ticks;                                                    //This line returns a value that is off by about 6.365606e+17, resulting in an incorrect date being shown
+        //        //GoToDate = actualDateTime.Ticks;                                                            //needs to be fixed and tested
         //    }
         //    catch
         //    {
         //        Log.Warn("HarmonyApp", "Selected event has no DateTime");
         //    }
-            
+
         //}
 
         private void LoadEvents(CalendarView calendar, Uri eventListPage)
